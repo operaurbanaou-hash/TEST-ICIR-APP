@@ -2,8 +2,6 @@ name: Build Minha ICIR External APK
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
 
 jobs:
   build-apk:
@@ -14,8 +12,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Extract Android project
-        run: unzip -q ICIR-APP-SOURCE.zip -d .
+      - name: Rebuild Android source archive
+        run: |
+          cat source-parts/part-*.b64 | base64 -d > ICIR-APP-SOURCE-FULL.zip
+          unzip -q ICIR-APP-SOURCE-FULL.zip -d .
 
       - name: Java 17
         uses: actions/setup-java@v4
