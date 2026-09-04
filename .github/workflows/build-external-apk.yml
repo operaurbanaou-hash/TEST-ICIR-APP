@@ -2,6 +2,8 @@ name: Build Minha ICIR External APK
 
 on:
   workflow_dispatch:
+  push:
+    branches: [ main ]
 
 jobs:
   build-apk:
@@ -14,8 +16,9 @@ jobs:
 
       - name: Rebuild Android source archive
         run: |
-          cat source-parts/part-*.b64 | base64 -d > ICIR-APP-SOURCE-FULL.zip
-          unzip -q ICIR-APP-SOURCE-FULL.zip -d .
+          cat build-source-parts/part-*.b64 | base64 -d > ICIR-APP-BUILD-SOURCE.zip
+          echo "6095c7abd069538fc618ddbac5a20143830311c6bcd4856f68aa9638bf38b192  ICIR-APP-BUILD-SOURCE.zip" | sha256sum -c -
+          unzip -q ICIR-APP-BUILD-SOURCE.zip -d .
 
       - name: Java 17
         uses: actions/setup-java@v4
