@@ -15,3 +15,5 @@ O workflow em `.github/workflows/build-external-apk.yml` extrai o projeto e gera
 Este repositório é público. Por isso, a chave privada de assinatura externa e suas senhas **não foram enviadas ao GitHub**. O build automático atual usa `assembleDebug`, adequado para instalação e testes externos.
 
 Para uma distribuição estável com atualizações futuras assinadas sempre pela mesma chave, a chave deve permanecer privada e ser configurada em ambiente seguro antes do build de release.
+
+Build automático configurado em 04/09/2026.
